@@ -1,41 +1,28 @@
-<!--header section--->
-
-<header>
-    <div class="menu-btn">
-            <li>
-            <a href="/artikel">artikel</a>
-            </li>
-            <li>
-            <a href="/postingan/index">postingan</a>
-            </li>
-            <li>
-            <a href="/about">about</a>
-            </li>
-            <li>
-            <a href="/">home</a>
-            </li>
-        </div>
-</header>
-<div class="about-main">
-    <h1>Ini Postinganku</h1>
-</div>
-
-
-<% postingan1="belajar Ruby On Rails" %>
-<% postingan2="Macam-macam Bahasa Pemrograman" %>
-
-<%= postingan1 %><br>  
-<%= postingan2 %>
-
 <div class="main post-index">
-     <div class="container">
-     <div class="post-index-item">
-            <%= postingan1 %>
-    </div>
-    </div>
+    <div class="container">
+        <p><%= flash[:pesan] %></p>
+        <a href="/postingan/input">Input Data</a>
+        <table border="1">
+            <tr>
+                <th>No</th>       
+                <th>Judul</th>       
+                <th>Deskripsi</th>       
+                <th>Action</th>       
+            </tr>
+            <% 
+            no=0
+            @data.each do |value| %>
+            <tr>
+                <td><%= no= no+1 %></td>
+                <td><%= value.judul %></td>
+                <td><%= value.deskripsi %></td>
+                <td>
+                    <a href="/postingan/detail/<%= value.id %>">Detail</a> |
+                    <a href="/postingan/edit/<%= value.id %>">Edit</a> | 
+                    <a href="/postingan/delete/<%= value.id %>" OnClick="return confirm('Yakin Ingin Menghapus Data?')">Delete</a>
+                </td>
+            </tr>
+            <%end%>
+        </table>
+    </div>
 </div>
-
-
-
-
-
